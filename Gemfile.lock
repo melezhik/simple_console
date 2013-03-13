@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     simple_console (0.0.1)
-      term-ansicolor
+      term-ansicolor-logger
 
 GEM
   remote: https://rubygems.org/
@@ -11,6 +11,8 @@ GEM
     minitest (4.6.2)
     rake (10.0.3)
     term-ansicolor (1.1.1)
+    term-ansicolor-logger (1.0.3)
+      term-ansicolor (>= 1.0.4)
     turn (0.9.6)
       ansi
 

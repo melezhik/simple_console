@@ -6,6 +6,6 @@ Gem::Specification.new do |s|
     s.authors     = ["Alexey Melezhik"]
     s.email       = 'melezhik@gmail.com'
     s.files       = ["lib/simple/console.rb"]
-    s.homepage    = 'https://github.com/melezhik'
-    s.add_runtime_dependency "term-ansicolor", [">= 0"]
+    s.homepage    = 'https://github.com/melezhik/simple_console'
+    s.add_runtime_dependency "term-ansicolor-logger", [">= 0"]
 end

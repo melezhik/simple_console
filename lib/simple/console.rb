@@ -1,4 +1,4 @@
-require 'term/ansicolor'
+require 'term/ansicolor/logger'
 
 class Simple
   class Console
@@ -13,24 +13,31 @@ class Simple
     end
 
     def info(message, args={})
+
+        str = StringIO.new
+        log = Term::ANSIColor::Logger.new(str)
+
         if @color_output == true
             if args[:title].nil? || args[:title].empty?
-                string = "#{bold(black(blue("#{message}")))}"
+                log.info_magenta_bold message
             else
-                string = "#{black(red(bold("#{args[:title]}:")))} #{bold(black(blue("#{message}")))}"
+                log.info_magenta_bold "#{args[:title]} => #{message}"
             end
         else
             if args[:title].nil? || args[:title].empty?
-                string = "#{message}"
+                log.info message
             else
-                string = "#{args[:title]}: #{message}"
+                log.info "#{args[:title]} => #{message}"
             end
         end
-        string
+        str.string.chomp
     end
 
     def error(message)
-        string = @color_output == true ? "#{bold(red("ERROR: #{message}"))}" : "ERROR: #{message}"
+        str = StringIO.new
+        log = Term::ANSIColor::Logger.new(str)
+        string = @color_output == true ? log.error_red_bold(message) : log.error(message)
+        str.string.chomp
     end
 
   end
