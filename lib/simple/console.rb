@@ -1,4 +1,5 @@
 require 'term/ansicolor/logger'
+require 'stringio'
 
 class Simple
   class Console
