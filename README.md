@@ -9,11 +9,12 @@ A simple formatter for console output.
 usage
 =====
     
+         
     sc = Simple::Console.new(:colour_output => true)
     puts sc.info('hello world') # will print colour message "hello world"
     puts sc.info('Alexey Melezhik', :title =>'Name') # will print colour message "Name: Alexey Melezhik"
     puts sc.error('Bad error') # will print colour message "ERROR: Bad error"
-
+     
     sc = Simple::Console.new(:colour_output => false) # the same things, but in colourless mode
-
+      
 
