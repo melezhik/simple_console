@@ -1,11 +1,10 @@
-require 'term/ansicolor/logger'
+require 'paint'
+require 'logger'
 require 'stringio'
 
 class Simple
   class Console
     VERSION = '0.0.1'
-
-    include Term::ANSIColor
 
     attr_accessor :color_output
     
@@ -16,17 +15,17 @@ class Simple
     def info(message, args={})
 
         str = StringIO.new
-        log = Term::ANSIColor::Logger.new(str)
+        log = Logger.new(str)
 
         if @color_output == true
             if args[:title].nil? || args[:title].empty?
-                log.info_magenta_bold message
+                log.info(Paint(message, :white, :blue))
             else
-                log.info_magenta_bold "#{args[:title]} => #{message}"
+                log.info("#{Paint(args[:title], :white, :yellow)} #{Paint(message, :white, :blue)}")
             end
         else
             if args[:title].nil? || args[:title].empty?
-                log.info message
+                log.info(message)
             else
                 log.info "#{args[:title]} => #{message}"
             end
@@ -36,8 +35,8 @@ class Simple
 
     def error(message)
         str = StringIO.new
-        log = Term::ANSIColor::Logger.new(str)
-        string = @color_output == true ? log.error_red_bold(message) : log.error(message)
+        log = Logger.new(str)
+        string = @color_output == true ? log.error(Paint(message, :red, :black)) : log.error(message)
         str.string.chomp
     end
 
