@@ -6,6 +6,8 @@ class Simple
   class Console
     VERSION = '0.0.1'
 
+    include Paint
+
     attr_accessor :color_output
     
     def initialize args = {}
