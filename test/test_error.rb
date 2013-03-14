@@ -2,7 +2,7 @@ require File.join(File.dirname(__FILE__), '/test_helper.rb')
 
 class SimpleConsoleTest < MiniTest::Unit::TestCase
     def test_colorless_error
-        assert_match "ERROR -- : message",
+        assert_match "message",
             Simple::Console.new(:color_output => false).error('message')
     end
 end
