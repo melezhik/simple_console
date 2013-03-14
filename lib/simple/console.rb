@@ -1,12 +1,10 @@
-require 'paint'
+require 'term/ansicolor'
 require 'logger'
 require 'stringio'
 
 class Simple
   class Console
     VERSION = '0.0.1'
-
-    include Paint
 
     attr_accessor :color_output
     
@@ -17,28 +15,36 @@ class Simple
     def info(message, args={})
 
         str = StringIO.new
-        log = Logger.new(str)
+        logger = Logger.new(str)
+        c = Term::ANSIColor
 
         if @color_output == true
             if args[:title].nil? || args[:title].empty?
-                log.info(Paint(message, :white, :blue))
+                logger.info c.white { c.on_blue { message } }
             else
-                log.info("#{Paint(args[:title], :white, :yellow)} #{Paint(message, :white, :blue)}")
+                logger.info c.black { c.on_blue { args[:title] + " => " } }, c.white { c.on_blue { message } }
             end
         else
             if args[:title].nil? || args[:title].empty?
-                log.info(message)
+                logger.info(message)
             else
-                log.info "#{args[:title]} => #{message}"
+                logger.info "#{args[:title]} => #{message}"
             end
         end
         str.string.chomp
     end
 
     def error(message)
+
         str = StringIO.new
-        log = Logger.new(str)
-        string = @color_output == true ? log.error(Paint(message, :red, :black)) : log.error(message)
+        logger = Logger.new(str)
+        c = Term::ANSIColor
+
+        if @color_output == true 
+                logger.error c.red { c.on_black { message } }
+        else
+                logger.error message
+        end    
         str.string.chomp
     end
 

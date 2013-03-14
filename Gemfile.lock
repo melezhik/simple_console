@@ -3,7 +3,7 @@ PATH
   specs:
     simple_console (0.0.1)
       logger
-      paint
+      term-ansicolor
 
 GEM
   remote: https://rubygems.org/
@@ -11,8 +11,8 @@ GEM
     ansi (1.4.3)
     logger (1.2.8)
     minitest (4.6.2)
-    paint (0.8.5)
     rake (10.0.3)
+    term-ansicolor (1.1.1)
     turn (0.9.6)
       ansi
 
