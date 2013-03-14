@@ -14,11 +14,19 @@ class Simple
         @color_output = args[:color_output] || 'false'
     end
 
+    def give_me_logger str
+        logger = Logger.new(str)
+        logger.formatter = proc do |severity, datetime, progname, msg|
+        "[#{datetime}] #{severity}: #{msg}\n"
+        end
+        logger
+    end
+
     def info(message, args={})
 
         str = StringIO.new
-        logger = Logger.new(str)
         c = Term::ANSIColor
+        logger = give_me_logger str
 
         if @color_output == true
             if args[:title].nil? || args[:title].empty?
@@ -40,7 +48,7 @@ class Simple
 
         str = StringIO.new
         logger = Logger.new(str)
-        c = Term::ANSIColor
+        logger = give_me_logger str
 
         if @color_output == true 
                 logger.info dark( red( on_white message  ) )
