@@ -20,9 +20,9 @@ class Simple
 
         if @color_output == true
             if args[:title].nil? || args[:title].empty?
-                logger.info c.white { c.on_blue { message } }
+                logger.info c.red {  c.black {  c.on_white { message } } }
             else
-                logger.info c.black { c.on_blue { args[:title] + " => " } } + c.white { c.on_blue { message } }
+                logger.info c.red {  c.black {  c.on_white { args[:title] + ' => ' + message } } }
             end
         else
             if args[:title].nil? || args[:title].empty?
@@ -41,7 +41,7 @@ class Simple
         c = Term::ANSIColor
 
         if @color_output == true 
-                logger.error c.red { c.on_black { message } }
+                logger.error c.red { c.on_white { message } }
         else
                 logger.error message
         end    
