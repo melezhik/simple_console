@@ -51,7 +51,7 @@ class Simple
         logger = give_me_logger str
 
         if @color_output == true 
-                logger.error bold ( red( on_magenta message  ) )
+                logger.error bold ( black( on_yellow message  ) )
         else
                 logger.error message
         end    
