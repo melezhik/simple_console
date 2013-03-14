@@ -22,7 +22,7 @@ class Simple
             if args[:title].nil? || args[:title].empty?
                 logger.info c.white { c.on_blue { message } }
             else
-                logger.info c.black { c.on_blue { args[:title] + " => " } }, c.white { c.on_blue { message } }
+                logger.info c.black { c.on_blue { args[:title] + " => " } } + c.white { c.on_blue { message } }
             end
         else
             if args[:title].nil? || args[:title].empty?
