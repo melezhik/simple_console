@@ -24,7 +24,7 @@ class Simple
             if args[:title].nil? || args[:title].empty?
                 logger.info blue( on_white message  )
             else
-                logger.info dark( blue( on_white args[:title]  ) ) + blue( on_white( ' => ' + message )  )
+                logger.info dark( bold( blue( on_white underscore(args[:title])  ) ) ) + blue( on_white  ' : ' +message   )
             end
         else
             if args[:title].nil? || args[:title].empty?
