@@ -10,7 +10,7 @@ GEM
   specs:
     ansi (1.4.3)
     logger (1.2.8)
-    minitest (4.6.2)
+    minitest (4.7.0)
     rake (10.0.3)
     term-ansicolor (1.1.1)
     turn (0.9.6)

@@ -1,11 +1,10 @@
 require 'term/ansicolor'
 require 'logger'
 require 'stringio'
+require 'simple/console/version'
 
 class Simple
   class Console
-    VERSION = '0.0.1'
-
     include Term::ANSIColor
 
     attr_accessor :color_output
